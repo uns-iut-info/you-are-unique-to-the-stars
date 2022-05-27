@@ -16,7 +16,7 @@ function startGame() {
 
     modifySettings();
 
-    let sphere = scene.getMeshByName("mySphere");
+    let sphere = scene.getMeshByName("player");
 
     // main animation loop 60 times/s
     engine.runRenderLoop(() => {

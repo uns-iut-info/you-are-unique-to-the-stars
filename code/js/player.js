@@ -1,9 +1,9 @@
 // vars for handling inputs
 let inputStates = {
-        left : false,
-        right : false,
-        up : false,
-        //space : false
+    left: false,
+    right: false,
+    up: false,
+    //space : false
 };
 
 // different directions used for player movements
@@ -16,7 +16,7 @@ const direction = {
 
 // creates the sphere that will be controlled by the player
 function createSphere(scene) {
-    let sphere = BABYLON.MeshBuilder.CreateSphere("mySphere", { diameter: 2, segments: 32 }, scene);
+    let sphere = BABYLON.MeshBuilder.CreateSphere("player", { diameter: 2, segments: 32 }, scene);
     let sphereMaterial = new BABYLON.StandardMaterial("sphereMaterial", scene);
     sphereMaterial.emissiveColor = new BABYLON.Color3(0, 0.2, 1);
     sphere.material = sphereMaterial;
@@ -130,6 +130,12 @@ function createSphere(scene) {
         sphere.jumpSpeed = sphere.maxBounceJumpSpeed;
         sphere.jumping = true;
     }
+
+    //resets the position of the sphere to x : 0, y : 1
+    sphere.resetPos = () => {
+        sphere.position.x = 0;
+        sphere.position.y = 1;
+    }
     return sphere;
 }
 
@@ -181,8 +187,8 @@ function checkIfCanMove(sphere, dir) {
 
         // the current ray detected something
         if (pickInfo.hit) {
-            console.log("ray " + i + " : " + pickInfo.distance);
-            console.log(pickInfo.pickedMesh.name)
+            //console.log("ray " + i + " : " + pickInfo.distance);
+            //console.log(pickInfo.pickedMesh.name)
             return pickInfo.distance - 1;
         }
     }

@@ -6,10 +6,12 @@ function createScene() {
 
     // defines the background color
     scene.clearColor = new BABYLON.Color3(0.8, 0.8, 0.8);
-    
+
     let sphere = createSphere(scene);
-    createGround(scene);
-    createPlatforms(scene, sphere);
+
+    createMaterials(scene);
+    loadLevelOne(scene, sphere);
+
     createFollowCamera(scene, sphere);
     createLight(scene);
 
